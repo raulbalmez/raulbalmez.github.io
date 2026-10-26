@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Me — Raul Balmez</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #f7f5f0;
+      --card-bg: #ffffff;
+      --border: #e3dfd6;
+      --border-dark: #121212;
+      --text-main: #141414;
+      --text-muted: #575653;
+      --text-dim: #8c8982;
+      --accent: #000000;
+      --radius: 6px;
+      --transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.6;
+      padding: 0 1.5rem 4rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      -webkit-font-smoothing: antialiased;
+    }
+    .container { max-width: 980px; width: 100%; }
+
+    nav {
+      position: sticky;
+      top: 0;
+      width: 100%;
+      background: rgba(247, 245, 240, 0.92);
+      backdrop-filter: blur(12px);
+      z-index: 100;
+      border-bottom: 1px solid var(--border);
+      padding: 1.1rem 0;
+      margin-bottom: 3.5rem;
+    }
+    .nav-inner {
+      max-width: 980px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 0.5rem;
+    }
+    .nav-brand {
+      font-family: 'Space Mono', monospace;
+      font-weight: 700;
+      font-size: 0.95rem;
+      letter-spacing: -0.03em;
+      text-decoration: none;
+      color: var(--text-main);
+    }
+    .nav-links { display: flex; gap: 1.75rem; list-style: none; }
+    .nav-links a {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      color: var(--text-muted);
+      transition: var(--transition);
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--accent); font-weight: 700; }
+
+    .header-section {
+      padding-bottom: 2.5rem;
+      margin-bottom: 3rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .section-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-dim);
+      display: block;
+      margin-bottom: 0.35rem;
+    }
+    h1 { font-size: 2.5rem; font-weight: 700; letter-spacing: -0.03em; margin-bottom: 0.8rem; }
+
+    .content-area {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2.5rem;
+      min-height: 320px;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding-top: 2.5rem;
+      margin-top: 4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.78rem;
+      color: var(--text-dim);
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-inner">
+      <a href="index.html" class="nav-brand">RAUL BALMEZ</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="research.html">Research</a></li>
+        <li><a href="engineering.html">Engineering</a></li>
+        <li><a href="education.html">Education</a></li>
+        <li><a href="me.html" class="active">Me</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="container">
+    <header class="header-section">
+      <span class="section-label">Personal</span>
+      <h1>Me</h1>
+    </header>
+
+    <div class="content-area">
+      <!-- Write your personal content here -->
+    </div>
+
+    <footer>
+      <span>Raul Balmez</span>
+      <span>2026</span>
+    </footer>
+  </main>
+
+</body>
+</html>
