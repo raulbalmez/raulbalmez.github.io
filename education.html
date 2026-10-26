@@ -131,6 +131,22 @@
       font-size: 0.78rem;
       color: var(--text-dim);
     }
+
+    @media (max-width: 768px) {
+  body { padding: 0 1rem 3rem; }
+  nav { margin-bottom: 1.75rem; padding: 0.75rem 0; }
+  .nav-inner { flex-direction: column; align-items: flex-start; gap: 0.65rem; }
+  .nav-links { width: 100%; gap: 1.15rem; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+  .nav-links::-webkit-scrollbar { display: none; }
+  .nav-links a { white-space: nowrap; }
+  
+  h1 { font-size: 2rem !important; }
+  .header-section { margin-bottom: 2rem; padding-bottom: 1.75rem; }
+  .entry-card, .contact-card-main { padding: 1.4rem 1.25rem !important; }
+  .profiles-grid { grid-template-columns: 1fr !important; }
+  .contact-actions { flex-direction: column; }
+  .contact-actions a, .contact-actions button { width: 100%; justify-content: center; }
+}
   </style>
 </head>
 <body>
