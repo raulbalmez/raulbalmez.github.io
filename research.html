@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Research — Raul Balmez</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #f7f5f0;
+      --card-bg: #ffffff;
+      --card-subtle: #fbfaf7;
+      --border: #e3dfd6;
+      --border-dark: #121212;
+      --text-main: #141414;
+      --text-muted: #575653;
+      --text-dim: #8c8982;
+      --accent: #000000;
+      --radius: 6px;
+      --transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.6;
+      padding: 0 1.5rem 4rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      -webkit-font-smoothing: antialiased;
+    }
+    .container { max-width: 980px; width: 100%; }
+
+    /* Nav */
+    nav {
+      position: sticky;
+      top: 0;
+      width: 100%;
+      background: rgba(247, 245, 240, 0.92);
+      backdrop-filter: blur(12px);
+      z-index: 100;
+      border-bottom: 1px solid var(--border);
+      padding: 1.1rem 0;
+      margin-bottom: 3.5rem;
+    }
+    .nav-inner {
+      max-width: 980px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 0.5rem;
+    }
+    .nav-brand {
+      font-family: 'Space Mono', monospace;
+      font-weight: 700;
+      font-size: 0.95rem;
+      letter-spacing: -0.03em;
+      text-decoration: none;
+      color: var(--text-main);
+    }
+    .nav-links { display: flex; gap: 1.75rem; list-style: none; }
+    .nav-links a {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      color: var(--text-muted);
+      transition: var(--transition);
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--accent); font-weight: 700; }
+
+    .header-section {
+      padding-bottom: 2.5rem;
+      margin-bottom: 3rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .section-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-dim);
+      display: block;
+      margin-bottom: 0.35rem;
+    }
+    h1 { font-size: 2.5rem; font-weight: 700; letter-spacing: -0.03em; margin-bottom: 0.8rem; }
+    .header-desc { font-size: 1.05rem; color: var(--text-muted); max-width: 680px; }
+
+    .scholar-banner {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 1.25rem;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.82rem;
+      text-decoration: none;
+      color: var(--text-main);
+      padding: 0.4rem 0.8rem;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      transition: var(--transition);
+    }
+    .scholar-banner:hover { border-color: var(--border-dark); }
+
+    /* Paper cards */
+    .item-stack { display: flex; flex-direction: column; gap: 1.75rem; }
+    .entry-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+      transition: var(--transition);
+    }
+    .entry-card:hover {
+      border-color: var(--border-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px -6px rgba(0, 0, 0, 0.05);
+    }
+    .entry-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 1rem;
+      margin-bottom: 0.4rem;
+      flex-wrap: wrap;
+    }
+    .entry-title {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--text-main);
+      text-decoration: none;
+    }
+    .entry-date {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.8rem;
+      color: var(--text-dim);
+    }
+    .entry-sub {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+    }
+    .entry-desc {
+      font-size: 0.94rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .pills-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1.2rem;
+    }
+    .pill {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.72rem;
+      background: var(--card-subtle);
+      border: 1px solid var(--border);
+      padding: 4px 9px;
+      border-radius: 4px;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+    a.pill:hover {
+      color: var(--text-main);
+      border-color: var(--border-dark);
+      background: #ffffff;
+    }
+    .pill-venue {
+      background: #111;
+      color: #fff;
+      border-color: #111;
+      font-weight: 700;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding-top: 2.5rem;
+      margin-top: 4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.78rem;
+      color: var(--text-dim);
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-inner">
+      <a href="index.html" class="nav-brand">RAUL BALMEZ</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="research.html" class="active">Research</a></li>
+        <li><a href="engineering.html">Engineering</a></li>
+        <li><a href="education.html">Education</a></li>
+        <li><a href="me.html">Me</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="container">
+    <header class="header-section">
+      <span class="section-label">Academic Output</span>
+      <h1>Research</h1>
+      <p class="header-desc">
+        Publications and preprints spanning Vision Transformers, low-light image enhancement, and multi-modal scene understanding.
+      </p>
+      <a href="https://scholar.google.com/citations?user=vPC7raQAAAAJ" target="_blank" class="scholar-banner">
+        View complete publication index on Google Scholar ↗
+      </a>
+    </header>
+
+    <div class="item-stack">
+      <!-- VesperMUSE -->
+      <article class="entry-card">
+        <div class="entry-top">
+          <span class="entry-title">VesperMUSE: Multi-Modal Fusion Vision Transformer for Image Semantic Segmentation Under Diverse Light Conditions</span>
+          <span class="entry-date">2026</span>
+        </div>
+        <div class="entry-sub">Balmez, R. · arXiv:2610.21990 — BSc Dissertation (Award: 85%)</div>
+        <div class="pills-container">
+          <span class="pill pill-venue">arXiv:2610.21990</span>
+          <a class="pill" href="https://raulbalmez.github.io/VesperMUSE/" target="_blank">Project Page ↗</a>
+          <a class="pill" href="https://github.com/raulbalmez/VesperMUSE" target="_blank">Code (GitHub) ↗</a>
+        </div>
+      </article>
+
+      <!-- ISALux -->
+      <article class="entry-card">
+        <div class="entry-top">
+          <span class="entry-title">ISALux: Illumination and Segmentation Aware Transformer Employing Mixture of Experts for Low Light Image Enhancement</span>
+          <span class="entry-date">2026</span>
+        </div>
+        <div class="entry-sub">Balmez, R., Brateanu, A., Orhei, C., Ancuti, C., & Ancuti, C. · WACV 2026</div>
+        <div class="pills-container">
+          <span class="pill pill-venue">WACV 2026</span>
+          <a class="pill" href="https://raulbalmez.github.io/ISALux/" target="_blank">Project Page ↗</a>
+          <a class="pill" href="https://github.com/raulbalmez/ISALux" target="_blank">Code (GitHub) ↗</a>
+        </div>
+      </article>
+
+      <!-- DepthLux -->
+      <article class="entry-card">
+        <div class="entry-top">
+          <span class="entry-title">DepthLux: Employing Depthwise Separable Convolutions for Low-Light Image Enhancement</span>
+          <span class="entry-date">2025</span>
+        </div>
+        <div class="entry-sub">Balmez, R., Brateanu, A., Orhei, C., Ancuti, C. O., & Ancuti, C. · Sensors, 25(5), 1530</div>
+        <div class="pills-container">
+          <span class="pill pill-venue">Sensors 25(5)</span>
+          <a class="pill" href="https://github.com/raulbalmez/DepthLux" target="_blank">Code (GitHub) ↗</a>
+        </div>
+      </article>
+
+      <!-- KAN -->
+      <article class="entry-card">
+        <div class="entry-top">
+          <span class="entry-title">Enhancing low-light images with Kolmogorov-Arnold networks in transformer attention</span>
+          <span class="entry-date">2025</span>
+        </div>
+        <div class="entry-sub">Brateanu, A., Balmez, R., Orhei, C., Ancuti, C., & Ancuti, C. · Sensors, 25(2), 327</div>
+        <div class="pills-container">
+          <span class="pill pill-venue">Sensors 25(2)</span>
+        </div>
+      </article>
+
+      <!-- LYT-Net -->
+      <article class="entry-card">
+        <div class="entry-top">
+          <span class="entry-title">LYT-Net: Lightweight YUV transformer-based network for low-light image enhancement</span>
+          <span class="entry-date">2025</span>
+        </div>
+        <div class="entry-sub">Brateanu, A., Balmez, R., Avram, A., Orhei, C., & Ancuti, C. · IEEE Signal Processing Letters</div>
+        <div class="pills-container">
+          <span class="pill pill-venue">IEEE SPL</span>
+        </div>
+      </article>
+
+      <!-- AKDT -->
+      <article class="entry-card">
+        <div class="entry-top">
+          <span class="entry-title">AKDT: Adaptive Kernel Dilation Transformer for Effective Image Denoising</span>
+          <span class="entry-date">2025</span>
+        </div>
+        <div class="entry-sub">Brateanu, A., Balmez, R., Avram, A., & Orhei, C. · Proceedings Copyright, 418(425), 19</div>
+        <div class="pills-container">
+          <span class="pill pill-venue">Proceedings</span>
+        </div>
+      </article>
+
+      <!-- ModalFormer -->
+      <article class="entry-card">
+        <div class="entry-top">
+          <span class="entry-title">ModalFormer: Multimodal Transformer for Low-Light Image Enhancement</span>
+          <span class="entry-date">2025</span>
+        </div>
+        <div class="entry-sub">Brateanu, A., Balmez, R., Orhei, C., Ancuti, C., & Ancuti, C. · arXiv:2507.20388</div>
+        <div class="pills-container">
+          <span class="pill pill-venue">arXiv:2507.20388</span>
+        </div>
+      </article>
+    </div>
+
+    <footer>
+      <span>Raul Balmez</span>
+      <span>2026</span>
+    </footer>
+  </main>
+
+</body>
+</html>
