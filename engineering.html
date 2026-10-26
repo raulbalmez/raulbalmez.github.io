@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Engineering — Raul Balmez</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #f7f5f0;
+      --card-bg: #ffffff;
+      --border: #e3dfd6;
+      --border-dark: #121212;
+      --text-main: #141414;
+      --text-muted: #575653;
+      --text-dim: #8c8982;
+      --accent: #000000;
+      --radius: 6px;
+      --transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.6;
+      padding: 0 1.5rem 4rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      -webkit-font-smoothing: antialiased;
+    }
+    .container { max-width: 980px; width: 100%; }
+
+    nav {
+      position: sticky;
+      top: 0;
+      width: 100%;
+      background: rgba(247, 245, 240, 0.92);
+      backdrop-filter: blur(12px);
+      z-index: 100;
+      border-bottom: 1px solid var(--border);
+      padding: 1.1rem 0;
+      margin-bottom: 3.5rem;
+    }
+    .nav-inner {
+      max-width: 980px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 0.5rem;
+    }
+    .nav-brand {
+      font-family: 'Space Mono', monospace;
+      font-weight: 700;
+      font-size: 0.95rem;
+      letter-spacing: -0.03em;
+      text-decoration: none;
+      color: var(--text-main);
+    }
+    .nav-links { display: flex; gap: 1.75rem; list-style: none; }
+    .nav-links a {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      color: var(--text-muted);
+      transition: var(--transition);
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--accent); font-weight: 700; }
+
+    .header-section {
+      padding-bottom: 2.5rem;
+      margin-bottom: 3rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .section-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-dim);
+      display: block;
+      margin-bottom: 0.35rem;
+    }
+    h1 { font-size: 2.5rem; font-weight: 700; letter-spacing: -0.03em; margin-bottom: 0.8rem; }
+    .header-desc { font-size: 1.05rem; color: var(--text-muted); max-width: 680px; }
+
+    .item-stack { display: flex; flex-direction: column; gap: 2rem; }
+    .entry-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2.25rem;
+      transition: var(--transition);
+    }
+    .entry-card:hover {
+      border-color: var(--border-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px -6px rgba(0, 0, 0, 0.05);
+    }
+    .entry-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 1rem;
+      margin-bottom: 0.35rem;
+      flex-wrap: wrap;
+    }
+    .entry-title { font-size: 1.25rem; font-weight: 700; color: var(--text-main); }
+    .entry-date { font-family: 'Space Mono', monospace; font-size: 0.82rem; color: var(--text-dim); }
+    .entry-sub { font-size: 0.95rem; font-weight: 500; color: var(--text-muted); margin-bottom: 1.25rem; }
+
+    ul.bullet-list {
+      list-style-type: square;
+      margin-left: 1.2rem;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+    ul.bullet-list li { margin-bottom: 0.6rem; line-height: 1.6; }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding-top: 2.5rem;
+      margin-top: 4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.78rem;
+      color: var(--text-dim);
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-inner">
+      <a href="index.html" class="nav-brand">RAUL BALMEZ</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="research.html">Research</a></li>
+        <li><a href="engineering.html" class="active">Engineering</a></li>
+        <li><a href="education.html">Education</a></li>
+        <li><a href="me.html">Me</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="container">
+    <header class="header-section">
+      <span class="section-label">Industry & Systems</span>
+      <h1>Engineering</h1>
+      <p class="header-desc">
+        Professional engineering experience across model optimization, quantization, and deep learning pipelines.
+      </p>
+    </header>
+
+    <div class="item-stack">
+      <!-- Expedera -->
+      <article class="entry-card">
+        <div class="entry-top">
+          <span class="entry-title">Expedera Inc.</span>
+          <span class="entry-date">07/2024 — 11/2025</span>
+        </div>
+        <div class="entry-sub">AI Software Engineer · Bath, UK</div>
+        <ul class="bullet-list">
+          <li>Implemented quantization (PTQ & QAT) and optimized LLM multimodal inference with evaluation tools.</li>
+          <li>Developed cross-framework I/O tools and contributed to hardware/software testing.</li>
+          <li>Trained interns to ensure smooth knowledge transfer and team continuity.</li>
+        </ul>
+      </article>
+
+      <!-- Continental -->
+      <article class="entry-card">
+        <div class="entry-top">
+          <span class="entry-title">Continental</span>
+          <span class="entry-date">07/2023 — 09/2023</span>
+        </div>
+        <div class="entry-sub">AI Research Intern · Timisoara, Romania</div>
+        <ul class="bullet-list">
+          <li>Researched the topic of performing image enhancement and image signal processing using Generative Adversarial Networks.</li>
+          <li>Implemented an ISP (Image Signal Processing) chain consisting of more than 10 enhancement and layout filters; extended and researched processing techniques.</li>
+          <li>Developed and performed optimizations on 4 GAN architectures, custom generators (Convolutional Generative Networks) and loss functions. Wrote an internal white paper based on findings.</li>
+        </ul>
+      </article>
+    </div>
+
+    <footer>
+      <span>Raul Balmez</span>
+      <span>2026</span>
+    </footer>
+  </main>
+
+</body>
+</html>
