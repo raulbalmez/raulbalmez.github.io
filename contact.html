@@ -38,6 +38,7 @@
     }
     .container { max-width: 980px; width: 100%; }
 
+    /* Nav */
     nav {
       position: sticky;
       top: 0;
@@ -77,6 +78,7 @@
     }
     .nav-links a:hover, .nav-links a.active { color: var(--accent); font-weight: 700; }
 
+    /* Header */
     .header-section {
       padding-bottom: 2.5rem;
       margin-bottom: 3rem;
@@ -92,7 +94,7 @@
       margin-bottom: 0.35rem;
     }
     h1 { font-size: 2.5rem; font-weight: 700; letter-spacing: -0.03em; margin-bottom: 0.8rem; }
-    .header-desc { font-size: 1.05rem; color: var(--text-muted); max-width: 680px; }
+    .header-desc { font-size: 1.05rem; color: var(--text-muted); max-width: 680px; line-height: 1.6; }
 
     /* Email Focus Box */
     .contact-card-main {
@@ -102,17 +104,23 @@
       padding: 2.5rem;
       margin-bottom: 2rem;
     }
+    .contact-scope {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
     .contact-label {
       font-family: 'Space Mono', monospace;
       font-size: 0.75rem;
       text-transform: uppercase;
       letter-spacing: 0.08em;
       color: var(--text-dim);
-      margin-bottom: 0.6rem;
+      margin-bottom: 0.5rem;
     }
     .email-display {
       font-family: 'Space Mono', monospace;
-      font-size: 1.25rem;
+      font-size: 1.3rem;
       font-weight: 700;
       color: var(--text-main);
       word-break: break-all;
@@ -184,6 +192,7 @@
       align-items: center;
     }
 
+    /* Footer */
     footer {
       border-top: 1px solid var(--border);
       padding-top: 2.5rem;
@@ -222,16 +231,21 @@
       <span class="section-label">Connect</span>
       <h1>Contact</h1>
       <p class="header-desc">
-        Feel free to reach out directly via email or connect through academic and professional networks.
+        Open to research collaborations, technical speaking engagements, and engineering consultancy inquiries.
       </p>
     </header>
 
     <!-- Email Card -->
     <div class="contact-card-main">
+      <p class="contact-scope">
+        Whether you are interested in discussing research on vision architectures, inviting me for technical talks, or consulting on edge AI optimization and inference pipelines, feel free to get in touch directly:
+      </p>
+      
       <div class="contact-label">Direct Email</div>
-      <div class="email-display" id="emailText">raul.balmez@student.manchester.ac.uk</div>
+      <div class="email-display" id="emailText">raul.balmez@gmail.com</div>
+      
       <div class="contact-actions">
-        <a href="mailto:raul.balmez@student.manchester.ac.uk" class="btn">Open in Mail Client →</a>
+        <a href="mailto:raul.balmez@gmail.com" class="btn">Open in Mail Client →</a>
         <button class="btn btn-secondary" onclick="copyEmail()">
           <span id="copyBtnText">Copy Address</span>
         </button>
@@ -246,7 +260,7 @@
       </a>
 
       <a href="https://scholar.google.com/citations?user=vPC7raQAAAAJ" target="_blank" class="profile-card">
-        <span class="profile-platform">Publications</span>
+        <span class="profile-platform">Academic Profiles</span>
         <span class="profile-name">Google Scholar ↗</span>
       </a>
 
