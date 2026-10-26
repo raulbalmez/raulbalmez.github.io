@@ -3,25 +3,26 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Raul Balmez | Research & Engineering</title>
+  <title>Raul Balmez</title>
   
-  <!-- Fonts -->
+  <!-- Modern Clean Typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --bg: #0b0b0c;
-      --card-bg: #111113;
-      --card-hover: #161619;
-      --border: #222226;
-      --border-hover: #3a3a42;
-      --text-main: #ededed;
-      --text-muted: #8b8b93;
-      --text-dim: #5c5c63;
-      --accent: #ffffff;
-      --tag-bg: #1c1c21;
+      --bg: #f7f5f0;              /* Bone white */
+      --card-bg: #ffffff;
+      --card-subtle: #fbfaf7;
+      --border: #e3dfd6;
+      --border-dark: #121212;
+      --text-main: #141414;        /* Deep ink black */
+      --text-muted: #575653;
+      --text-dim: #8c8982;
+      --accent: #000000;
+      --radius: 6px;
+      --transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     * {
@@ -30,447 +31,920 @@
       padding: 0;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       background-color: var(--bg);
       color: var(--text-main);
-      font-family: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
       line-height: 1.6;
-      padding: 3rem 1.5rem;
+      padding: 0 1.5rem 5rem;
       min-height: 100vh;
       -webkit-font-smoothing: antialiased;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
+      align-items: center;
     }
 
     .container {
-      max-width: 760px;
+      max-width: 980px;
       width: 100%;
-      animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
 
-    /* Subtle background grid accent */
-    body::before {
-      content: "";
-      position: fixed;
+    /* Fixed Minimalist Navigation */
+    nav {
+      position: sticky;
       top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-      background-size: 32px 32px;
-      pointer-events: none;
-      z-index: -1;
-    }
-
-    header {
-      margin-bottom: 3.5rem;
+      width: 100%;
+      background: rgba(247, 245, 240, 0.9);
+      backdrop-filter: blur(12px);
+      z-index: 100;
       border-bottom: 1px solid var(--border);
-      padding-bottom: 2rem;
+      padding: 1.1rem 0;
+      margin-bottom: 3.5rem;
     }
 
-    .name-title {
+    .nav-inner {
+      max-width: 980px;
+      margin: 0 auto;
       display: flex;
       justify-content: space-between;
-      align-items: baseline;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-bottom: 0.5rem;
-    }
-
-    h1 {
-      font-size: 2rem;
-      font-weight: 600;
-      letter-spacing: -0.04em;
-      color: #fff;
-    }
-
-    .status-badge {
-      font-family: 'Geist Mono', monospace;
-      font-size: 0.78rem;
-      color: var(--text-muted);
-      display: inline-flex;
       align-items: center;
-      gap: 6px;
-      padding: 3px 8px;
-      background: var(--tag-bg);
-      border: 1px solid var(--border);
-      border-radius: 9999px;
+      padding: 0 0.5rem;
     }
 
-    .status-dot {
-      width: 6px;
-      height: 6px;
-      background-color: #22c55e;
-      border-radius: 50%;
-      box-shadow: 0 0 6px rgba(34, 197, 94, 0.6);
-    }
-
-    .bio {
-      color: var(--text-muted);
-      font-size: 0.98rem;
-      margin-top: 0.5rem;
-      max-width: 600px;
-    }
-
-    .links {
-      display: flex;
-      gap: 1.25rem;
-      margin-top: 1.25rem;
-    }
-
-    .link-item {
-      font-family: 'Geist Mono', monospace;
-      color: var(--text-muted);
-      font-size: 0.85rem;
+    .nav-brand {
+      font-family: 'Space Mono', monospace;
+      font-weight: 700;
+      font-size: 0.95rem;
+      letter-spacing: -0.03em;
       text-decoration: none;
-      transition: color 0.2s ease, transform 0.2s ease;
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
+      color: var(--text-main);
     }
 
-    .link-item:hover {
+    .nav-links {
+      display: flex;
+      gap: 1.75rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      color: var(--text-muted);
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover {
       color: var(--accent);
+    }
+
+    /* Hero Section */
+    .hero {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr;
+      gap: 3.5rem;
+      align-items: center;
+      padding-bottom: 4rem;
+      border-bottom: 1px solid var(--border);
+      animation: fadeIn 0.8s var(--transition) forwards;
+    }
+
+    .hero-content h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      line-height: 1.05;
+      margin-bottom: 0.75rem;
+      color: var(--accent);
+    }
+
+    .hero-tagline {
+      font-family: 'Space Mono', monospace;
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--text-main);
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .hero-desc {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+      max-width: 540px;
+      line-height: 1.65;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--text-main);
+      color: #ffffff;
+      padding: 0.75rem 1.4rem;
+      border-radius: var(--radius);
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: var(--transition);
+      border: 1px solid var(--text-main);
+    }
+
+    .btn:hover {
+      background: #2a2a2a;
       transform: translateY(-1px);
     }
 
-    /* Section Styles */
-    section {
-      margin-bottom: 4rem;
+    .btn-secondary {
+      background: transparent;
+      color: var(--text-main);
+      border: 1px solid var(--border);
     }
 
-    .section-header {
+    .btn-secondary:hover {
+      background: var(--card-bg);
+      border-color: var(--text-main);
+      color: var(--text-main);
+      transform: translateY(-1px);
+    }
+
+    /* Profile Photo Frame */
+    .hero-media {
       display: flex;
-      align-items: center;
-      gap: 1rem;
-      margin-bottom: 1.5rem;
+      justify-content: flex-end;
     }
 
-    h2 {
-      font-size: 1.15rem;
-      font-weight: 500;
-      letter-spacing: -0.02em;
-      color: #fff;
-      text-transform: uppercase;
-      font-family: 'Geist Mono', monospace;
-    }
-
-    .section-line {
-      flex: 1;
-      height: 1px;
-      background: var(--border);
-    }
-
-    /* Card styling */
-    .stack {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-
-    .card {
+    .photo-frame {
+      width: 100%;
+      max-width: 290px;
+      aspect-ratio: 4 / 5;
       background: var(--card-bg);
       border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 1.25rem;
-      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      border-radius: var(--radius);
+      padding: 10px;
+      box-shadow: 0 16px 36px -12px rgba(0, 0, 0, 0.06);
       position: relative;
     }
 
-    .card:hover {
-      background: var(--card-hover);
-      border-color: var(--border-hover);
+    .photo-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: calc(var(--radius) - 2px);
+      filter: grayscale(15%) contrast(102%);
+      transition: var(--transition);
+    }
+
+    .photo-frame img:hover {
+      filter: grayscale(0%);
+    }
+
+    /* Fallback image state */
+    .photo-placeholder {
+      width: 100%;
+      height: 100%;
+      background: #eae6dc;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border-radius: calc(var(--radius) - 2px);
+      color: var(--text-dim);
+      font-family: 'Space Mono', monospace;
+      font-size: 0.75rem;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    /* Parallel Highlights Layout */
+    .highlights-section {
+      padding: 4rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .columns-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .column-panel {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2.25rem 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: var(--transition);
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.02);
+    }
+
+    .column-panel:hover {
+      border-color: var(--border-dark);
+      box-shadow: 0 12px 30px -8px rgba(0, 0, 0, 0.07);
       transform: translateY(-2px);
     }
 
-    .card-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
+    .column-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .column-tag {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      color: var(--text-dim);
       margin-bottom: 0.35rem;
-      gap: 1rem;
     }
 
-    .card-title {
+    .column-header h3 {
+      font-size: 1.45rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .highlight-body {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      margin-bottom: 2rem;
+    }
+
+    .highlight-item h4 {
       font-size: 1rem;
-      font-weight: 500;
+      font-weight: 600;
+      margin-bottom: 0.3rem;
       color: var(--text-main);
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
     }
 
-    .card-title:hover {
-      color: #fff;
-      text-decoration: underline;
-    }
-
-    .date {
-      font-family: 'Geist Mono', monospace;
-      font-size: 0.78rem;
-      color: var(--text-dim);
-      white-space: nowrap;
-    }
-
-    .role-company {
-      font-size: 0.88rem;
-      color: var(--text-muted);
-      margin-bottom: 0.6rem;
-    }
-
-    .authors {
-      font-size: 0.85rem;
-      color: var(--text-dim);
-      margin-bottom: 0.4rem;
-    }
-
-    .authors strong {
-      color: var(--text-muted);
-      font-weight: 500;
-    }
-
-    .desc {
-      font-size: 0.88rem;
+    .highlight-item p {
+      font-size: 0.9rem;
       color: var(--text-muted);
       line-height: 1.5;
     }
 
-    ul.desc-list {
-      list-style-type: disc;
-      list-style-position: inside;
-      font-size: 0.88rem;
-      color: var(--text-muted);
-      margin-top: 0.4rem;
-    }
-
-    ul.desc-list li {
-      margin-bottom: 0.3rem;
-    }
-
-    .meta-tags {
-      display: flex;
+    .column-footer-link {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-decoration: none;
+      color: var(--text-main);
+      display: inline-flex;
+      align-items: center;
       gap: 0.5rem;
-      flex-wrap: wrap;
-      margin-top: 0.8rem;
+      transition: var(--transition);
     }
 
-    .tag {
-      font-family: 'Geist Mono', monospace;
-      font-size: 0.72rem;
-      padding: 2px 7px;
-      border-radius: 4px;
-      background: var(--tag-bg);
+    .column-footer-link:hover {
+      gap: 0.75rem;
+      text-decoration: underline;
+    }
+
+    /* General Section Styling */
+    section {
+      padding: 4.5rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-title-wrap {
+      margin-bottom: 2.5rem;
+    }
+
+    .section-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-dim);
+      display: block;
+      margin-bottom: 0.4rem;
+    }
+
+    h2 {
+      font-size: 1.85rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+    }
+
+    /* List & Item Stacks */
+    .item-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .entry-card {
+      background: var(--card-bg);
       border: 1px solid var(--border);
-      color: var(--text-muted);
+      border-radius: var(--radius);
+      padding: 1.75rem 2rem;
+      transition: var(--transition);
     }
 
-    .badge-venue {
-      font-family: 'Geist Mono', monospace;
-      font-size: 0.72rem;
-      padding: 2px 6px;
-      border-radius: 4px;
-      background: #ffffff;
-      color: #000;
-      font-weight: 600;
+    .entry-card:hover {
+      border-color: var(--border-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px -6px rgba(0, 0, 0, 0.05);
     }
 
-    footer {
-      border-top: 1px solid var(--border);
-      padding-top: 2rem;
+    .entry-top {
       display: flex;
       justify-content: space-between;
-      color: var(--text-dim);
+      align-items: baseline;
+      gap: 1rem;
+      margin-bottom: 0.4rem;
+      flex-wrap: wrap;
+    }
+
+    .entry-title {
+      font-size: 1.12rem;
+      font-weight: 600;
+      color: var(--text-main);
+      text-decoration: none;
+    }
+
+    .entry-title:hover {
+      text-decoration: underline;
+    }
+
+    .entry-date {
+      font-family: 'Space Mono', monospace;
       font-size: 0.8rem;
-      font-family: 'Geist Mono', monospace;
+      color: var(--text-dim);
+    }
+
+    .entry-sub {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+    }
+
+    .entry-desc {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    ul.bullet-list {
+      list-style-type: square;
+      margin-left: 1.2rem;
+      margin-top: 0.6rem;
+      font-size: 0.92rem;
+      color: var(--text-muted);
+    }
+
+    ul.bullet-list li {
+      margin-bottom: 0.45rem;
+    }
+
+    .pills-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1.1rem;
+    }
+
+    .pill {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.7rem;
+      background: var(--card-subtle);
+      border: 1px solid var(--border);
+      padding: 3px 8px;
+      border-radius: 4px;
+      color: var(--text-muted);
+    }
+
+    .pill-venue {
+      background: #111;
+      color: #fff;
+      border-color: #111;
+      font-weight: 700;
+    }
+
+    /* Me Grid Layout */
+    .me-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .me-box {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.75rem;
+    }
+
+    .me-box h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .me-box p {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* Contact Row */
+    .contact-container {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+
+    .contact-links-grid {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .contact-item {
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+
+    .contact-item span {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--text-dim);
+      text-transform: uppercase;
+    }
+
+    .contact-item strong {
+      font-size: 0.92rem;
+      color: var(--text-main);
+      transition: var(--transition);
+    }
+
+    .contact-item:hover strong {
+      text-decoration: underline;
+    }
+
+    /* Footer */
+    footer {
+      padding-top: 3.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.78rem;
+      color: var(--text-dim);
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(8px); }
+      from { opacity: 0; transform: translateY(12px); }
       to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 820px) {
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+      .hero-media {
+        justify-content: flex-start;
+      }
+      .photo-frame {
+        max-width: 200px;
+      }
+      .columns-grid, .me-grid {
+        grid-template-columns: 1fr;
+      }
+      .nav-links {
+        display: none;
+      }
     }
   </style>
 </head>
 <body>
 
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-inner">
+      <a href="#" class="nav-brand">RAUL BALMEZ</a>
+      <ul class="nav-links">
+        <li><a href="#highlights">Highlights</a></li>
+        <li><a href="#research">Research</a></li>
+        <li><a href="#engineering">Engineering</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#me">Me</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
   <main class="container">
-    <!-- Header / Bio -->
-    <header>
-      <div class="name-title">
+    
+    <!-- Hero Header -->
+    <header class="hero">
+      <div class="hero-content">
         <h1>Raul Balmez</h1>
-        <div class="status-badge">
-          <span class="status-dot"></span>
-          <span>Spärck AI Scholar</span>
+        <div class="hero-tagline">AI Engineer and Researcher</div>
+        <p class="hero-desc">
+          Spärck AI Scholar and MSc Machine Learning student at the University of Manchester. 
+          Operating across applied vision transformers, low-light image enhancement, and hardware-constrained edge inference.
+        </p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn">Get in touch →</a>
+          <a href="https://github.com/raulbalmez" target="_blank" class="btn btn-secondary">GitHub ↗</a>
+          <a href="https://scholar.google.com/citations?user=vPC7raQAAAAJ" target="_blank" class="btn btn-secondary">Google Scholar ↗</a>
         </div>
       </div>
-      <p class="bio">
-        MSc Machine Learning student at the University of Manchester. 
-        Focusing on low-light enhancement, vision transformers, and efficient AI systems.
-      </p>
-      
-      <div class="links">
-        <a class="link-item" href="https://github.com/raulbalmez" target="_blank">GitHub ↗</a>
-        <a class="link-item" href="https://scholar.google.com/citations?user=vPC7raQAAAAJ" target="_blank">Scholar ↗</a>
-        <a class="link-item" href="https://linkedin.com" target="_blank">LinkedIn ↗</a>
-        <a class="link-item" href="mailto:raul.balmez@student.manchester.ac.uk">Email ↗</a>
+
+      <!-- Profile Photo -->
+      <div class="hero-media">
+        <div class="photo-frame">
+          <!-- Place your photo inside an 'assets/' folder named 'profile.jpg' -->
+          <img src="assets/profile.jpg" alt="Raul Balmez" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'photo-placeholder\'><span>assets/profile.jpg</span><br><br>Add photo here</div>';" />
+        </div>
       </div>
     </header>
 
-    <!-- Section 1: Research -->
-    <section id="research">
-      <div class="section-header">
-        <h2>01 / Research</h2>
-        <div class="section-line"></div>
+    <!-- Parallel Columns: Highlights -->
+    <section id="highlights" class="highlights-section">
+      <div class="section-title-wrap">
+        <span class="section-label">Executive Brief</span>
+        <h2>Core Tracks</h2>
       </div>
 
-      <div class="stack">
-        <!-- Paper 1 -->
-        <article class="card">
-          <div class="card-top">
-            <a class="card-title" href="https://arxiv.org/abs/2610.21990" target="_blank">
-              VesperMUSE: Multi-Modal Fusion Vision Transformer ↗
+      <div class="columns-grid">
+        <!-- Column 1: Research -->
+        <div class="column-panel">
+          <div class="column-header">
+            <span class="column-tag">Track 01</span>
+            <h3>Research</h3>
+          </div>
+          <div class="highlight-body">
+            <div class="highlight-item">
+              <h4>ISALux (WACV 2026)</h4>
+              <p>Illumination and segmentation-aware Transformer using dynamic Mixture of Experts (MoE) architectures for extreme low-light environments.</p>
+            </div>
+            <div class="highlight-item">
+              <h4>VesperMUSE (arXiv:2610.21990)</h4>
+              <p>Multi-modal fusion Vision Transformer for robust semantic segmentation across lighting extremes (Dissertation award: 85%).</p>
+            </div>
+          </div>
+          <a href="#research" class="column-footer-link">Explore more on Research →</a>
+        </div>
+
+        <!-- Column 2: Engineering -->
+        <div class="column-panel">
+          <div class="column-header">
+            <span class="column-tag">Track 02</span>
+            <h3>Engineering</h3>
+          </div>
+          <div class="highlight-body">
+            <div class="highlight-item">
+              <h4>Silicon Edge Inference (Expedera)</h4>
+              <p>Implemented Post-Training Quantization (PTQ) and Quantization-Aware Training (QAT) to execute low-latency LLM and multimodal models on target NPUs.</p>
+            </div>
+            <div class="highlight-item">
+              <h4>Signal Processing Chains (Continental)</h4>
+              <p>Engineered automated end-to-end ISP chains with over 10 adaptive filters combined with generative neural network architectures.</p>
+            </div>
+          </div>
+          <a href="#engineering" class="column-footer-link">Explore more on Engineering →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 1: Research (Expanded) -->
+    <section id="research">
+      <div class="section-title-wrap">
+        <span class="section-label">Publications & Dissertations</span>
+        <h2>Research</h2>
+      </div>
+
+      <div class="item-stack">
+        <!-- VesperMUSE -->
+        <article class="entry-card">
+          <div class="entry-top">
+            <a class="entry-title" href="https://arxiv.org/abs/2610.21990" target="_blank">
+              VesperMUSE: Multi-Modal Fusion Vision Transformer for Image Semantic Segmentation Under Diverse Light Conditions ↗
             </a>
-            <span class="date">2026</span>
+            <span class="entry-date">2026</span>
           </div>
-          <div class="authors"><strong>Balmez, R.</strong></div>
-          <p class="desc">
-            BSc Dissertation achieving 85%. Multi-Modal Fusion Vision Transformer for Image Semantic Segmentation under diverse and extreme lighting environments.
+          <div class="entry-sub">Balmez, R. · BSc Dissertation (Score: 85)</div>
+          <p class="entry-desc">
+            Introduced a multi-modal fusion framework capable of segmenting complex scenes across diverse and degraded illumination spectra without degrading accuracy.
           </p>
-          <div class="meta-tags">
-            <span class="badge-venue">arXiv:2610.21990</span>
-            <span class="tag">Vision Transformers</span>
-            <span class="tag">Multi-Modal</span>
-            <span class="tag">Segmentation</span>
+          <div class="pills-container">
+            <span class="pill pill-venue">arXiv:2610.21990</span>
+            <span class="pill">Vision Transformers</span>
+            <span class="pill">Multi-Modal Fusion</span>
+            <span class="pill">Code: github.com/raulbalmez/VesperMUSE</span>
           </div>
         </article>
 
-        <!-- Paper 2 -->
-        <article class="card">
-          <div class="card-top">
-            <a class="card-title" href="https://github.com/raulbalmez/ISALux" target="_blank">
-              ISALux: Illumination & Segmentation Aware Transformer ↗
+        <!-- ISALux -->
+        <article class="entry-card">
+          <div class="entry-top">
+            <a class="entry-title" href="https://github.com/raulbalmez/ISALux" target="_blank">
+              ISALux: Illumination and Segmentation Aware Transformer Employing Mixture of Experts for Low Light Image Enhancement ↗
             </a>
-            <span class="date">2026</span>
+            <span class="entry-date">2026</span>
           </div>
-          <div class="authors"><strong>Balmez, R.</strong>, Brateanu, A., Orhei, C., Ancuti, C., Ancuti, C.</div>
-          <p class="desc">
-            Transformer employing Mixture of Experts (MoE) for low-light image enhancement, integrating illumination-semantic awareness.
+          <div class="entry-sub">Balmez, R., Brateanu, A., Orhei, C., Ancuti, C., & Ancuti, C.</div>
+          <p class="entry-desc">
+            Formulated a state-of-the-art low-light transformer featuring dynamic Mixture of Experts (MoE) routing conditioned on semantic priors and illumination maps.
           </p>
-          <div class="meta-tags">
-            <span class="badge-venue">WACV 2026</span>
-            <span class="tag">Mixture of Experts</span>
-            <span class="tag">Low-Light Enhancement</span>
+          <div class="pills-container">
+            <span class="pill pill-venue">WACV 2026</span>
+            <span class="pill">Mixture of Experts</span>
+            <span class="pill">Low-Light Image Enhancement</span>
+            <span class="pill">Code: github.com/raulbalmez/ISALux</span>
           </div>
         </article>
 
-        <!-- Paper 3 -->
-        <article class="card">
-          <div class="card-top">
-            <a class="card-title" href="https://github.com/raulbalmez/DepthLux" target="_blank">
-              DepthLux: Depthwise Separable Convolutions in LLIE ↗
+        <!-- DepthLux -->
+        <article class="entry-card">
+          <div class="entry-top">
+            <a class="entry-title" href="https://github.com/raulbalmez/DepthLux" target="_blank">
+              DepthLux: Employing Depthwise Separable Convolutions for Low-Light Image Enhancement ↗
             </a>
-            <span class="date">2025</span>
+            <span class="entry-date">2025</span>
           </div>
-          <div class="authors"><strong>Balmez, R.</strong>, Brateanu, A., Orhei, C., Ancuti, C. O., Ancuti, C.</div>
-          <p class="desc">
-            Novel Vision Transformer framework employing depthwise separable convolutions in the feed-forward network for parameter efficiency.
+          <div class="entry-sub">Balmez, R., Brateanu, A., Orhei, C., Ancuti, C. O., & Ancuti, C.</div>
+          <p class="entry-desc">
+            Designed an ultra-lightweight transformer block using inverted depthwise separable convolutions to drastically lower MACs and parameter footprint.
           </p>
-          <div class="meta-tags">
-            <span class="badge-venue">Sensors 25(5)</span>
-            <span class="tag">Efficient Transformers</span>
-            <span class="tag">Image Restoration</span>
+          <div class="pills-container">
+            <span class="pill pill-venue">Sensors 25(5), 1530</span>
+            <span class="pill">Parameter Efficiency</span>
+            <span class="pill">Code: github.com/raulbalmez/DepthLux</span>
           </div>
         </article>
 
-        <!-- Paper 4 -->
-        <article class="card">
-          <div class="card-top">
-            <span class="card-title">Enhancing Low-Light Images with KANs in Attention</span>
-            <span class="date">2025</span>
+        <!-- KAN Paper -->
+        <article class="entry-card">
+          <div class="entry-top">
+            <span class="entry-title">Enhancing Low-Light Images with Kolmogorov-Arnold Networks in Transformer Attention</span>
+            <span class="entry-date">2025</span>
           </div>
-          <div class="authors">Brateanu, A., <strong>Balmez, R.</strong>, Orhei, C., Ancuti, C., Ancuti, C.</div>
-          <p class="desc">
-            Investigating Kolmogorov–Arnold Networks (KAN) within transformer attention layers for non-linear image feature mapping.
+          <div class="entry-sub">Brateanu, A., Balmez, R., Orhei, C., Ancuti, C., & Ancuti, C.</div>
+          <p class="entry-desc">
+            Explored spline-based learnable activation mechanisms replacing classic linear projection heads inside self-attention layers for non-linear restoration.
           </p>
-          <div class="meta-tags">
-            <span class="badge-venue">Sensors 25(2)</span>
-            <span class="tag">KANs</span>
-            <span class="tag">Attention Mechanisms</span>
+          <div class="pills-container">
+            <span class="pill pill-venue">Sensors 25(2), 327</span>
+            <span class="pill">KAN Architectures</span>
+            <span class="pill">Attention Mechanisms</span>
           </div>
         </article>
 
-        <!-- Paper 5 -->
-        <article class="card">
-          <div class="card-top">
-            <span class="card-title">LYT-Net: Lightweight YUV Transformer</span>
-            <span class="date">2025</span>
+        <!-- LYT-Net & Other co-authored work -->
+        <article class="entry-card">
+          <div class="entry-top">
+            <span class="entry-title">LYT-Net, AKDT, and ModalFormer Architectures</span>
+            <span class="entry-date">2025</span>
           </div>
-          <div class="authors">Brateanu, A., <strong>Balmez, R.</strong>, Avram, A., Orhei, C., Ancuti, C.</div>
-          <p class="desc">
-            Lightweight transformer architecture exploiting the YUV color space representation for efficient restoration.
+          <div class="entry-sub">Co-authored with Brateanu, A., Avram, A., Orhei, C., & Ancuti, C.</div>
+          <p class="entry-desc">
+            Contributions to lightweight YUV colour space models (IEEE Signal Processing Letters), adaptive kernel dilation for image denoising, and multimodal low-light transformers.
           </p>
-          <div class="meta-tags">
-            <span class="badge-venue">IEEE SPL</span>
-            <span class="tag">Lightweight Architectures</span>
+          <div class="pills-container">
+            <span class="pill pill-venue">IEEE SPL</span>
+            <span class="pill pill-venue">arXiv:2507.20388</span>
+            <span class="pill">Color Space Optimization</span>
           </div>
         </article>
       </div>
     </section>
 
-    <!-- Section 2: Engineering -->
+    <!-- Section 2: Engineering (Expanded) -->
     <section id="engineering">
-      <div class="section-header">
-        <h2>02 / Engineering</h2>
-        <div class="section-line"></div>
+      <div class="section-title-wrap">
+        <span class="section-label">Industry & Systems Experience</span>
+        <h2>Engineering</h2>
       </div>
 
-      <div class="stack">
+      <div class="item-stack">
         <!-- Expedera -->
-        <article class="card">
-          <div class="card-top">
-            <span class="card-title">Expedera Inc.</span>
-            <span class="date">07/2024 — 11/2025</span>
+        <article class="entry-card">
+          <div class="entry-top">
+            <span class="entry-title">Expedera Inc.</span>
+            <span class="entry-date">07/2024 — 11/2025</span>
           </div>
-          <div class="role-company">AI Software Engineer · Bath, UK</div>
-          <ul class="desc-list">
-            <li>Implemented post-training quantization (PTQ) and quantization-aware training (QAT) to optimize LLM and multimodal models for edge NPU inference.</li>
-            <li>Built cross-framework I/O pipelines and automated evaluation tools for low-latency testing on silicon targets.</li>
-            <li>Conducted knowledge transfer and onboarding workshops for incoming engineering cohorts.</li>
+          <div class="entry-sub">AI Software Engineer · Bath, UK</div>
+          <p class="entry-desc">
+            Core engineer focusing on deep learning model acceleration for edge neural processing units (NPUs):
+          </p>
+          <ul class="bullet-list">
+            <li>Executed 8-bit and 4-bit Post-Training Quantization (PTQ) and Quantization-Aware Training (QAT) schemes for large language and multimodal models.</li>
+            <li>Designed and deployed cross-framework I/O pipelines bridging PyTorch graph representations into low-level execution runtimes.</li>
+            <li>Structured evaluation and performance validation suites measuring latency, memory utilization, and perplexity on production silicon.</li>
+            <li>Led technical onboarding and mentored engineering interns to ensure standard code quality across hardware-software toolsets.</li>
           </ul>
-          <div class="meta-tags">
-            <span class="tag">PyTorch</span>
-            <span class="tag">Quantization (PTQ/QAT)</span>
-            <span class="tag">LLM Inference</span>
-            <span class="tag">C/C++</span>
+          <div class="pills-container">
+            <span class="pill">PyTorch</span>
+            <span class="pill">Quantization (PTQ/QAT)</span>
+            <span class="pill">NPU Optimization</span>
+            <span class="pill">C/C++</span>
+            <span class="pill">LLM Inference</span>
           </div>
         </article>
 
         <!-- Continental -->
-        <article class="card">
-          <div class="card-top">
-            <span class="card-title">Continental</span>
-            <span class="date">07/2023 — 09/2023</span>
+        <article class="entry-card">
+          <div class="entry-top">
+            <span class="entry-title">Continental</span>
+            <span class="entry-date">07/2023 — 09/2023</span>
           </div>
-          <div class="role-company">AI Research Intern · Timișoara, Romania</div>
-          <ul class="desc-list">
-            <li>Researched image enhancement and signal processing pipelines using Generative Adversarial Networks (GANs).</li>
-            <li>Constructed an ISP chain with over 10 custom layout and enhancement filters.</li>
-            <li>Trained and benchmarked 4 custom convolutional generative models, delivering an internal white paper on low-light enhancement.</li>
+          <div class="entry-sub">AI Research Intern · Timișoara, Romania</div>
+          <p class="entry-desc">
+            Embedded within the automotive vision group to design neural image signal pipelines:
+          </p>
+          <ul class="bullet-list">
+            <li>Built an end-to-end Image Signal Processing (ISP) pipeline integrating 10+ custom image enhancement and layout filters.</li>
+            <li>Constructed, trained, and benchmarked 4 Generative Adversarial Network (GAN) architectures and custom perceptual loss functions.</li>
+            <li>Authored an internal technical white paper defining recommendations for deploying generative enhancement on automotive embedded cameras.</li>
           </ul>
-          <div class="meta-tags">
-            <span class="tag">GANs</span>
-            <span class="tag">ISP Pipeline</span>
-            <span class="tag">Computer Vision</span>
-            <span class="tag">PyTorch</span>
+          <div class="pills-container">
+            <span class="pill">Computer Vision</span>
+            <span class="pill">ISP Pipeline</span>
+            <span class="pill">GAN Architectures</span>
+            <span class="pill">Custom Loss Formulation</span>
           </div>
         </article>
       </div>
     </section>
 
+    <!-- Section 3: Education -->
+    <section id="education">
+      <div class="section-title-wrap">
+        <span class="section-label">Academic Foundations</span>
+        <h2>Education</h2>
+      </div>
+
+      <div class="item-stack">
+        <!-- MSc -->
+        <article class="entry-card">
+          <div class="entry-top">
+            <span class="entry-title">University of Manchester</span>
+            <span class="entry-date">09/2026 — 09/2027 (Expected)</span>
+          </div>
+          <div class="entry-sub">Master of Science, Machine Learning · Manchester, UK</div>
+          <p class="entry-desc">
+            Recipient of the prestigious <strong>Spärck AI Scholarship</strong> (awarded to only 100 scholars across the UK recognizing top AI talent).
+          </p>
+          <div class="pills-container">
+            <span class="pill">Reinforcement Learning</span>
+            <span class="pill">Reasoning & Uncertainty</span>
+            <span class="pill">Cognitive Robotics</span>
+            <span class="pill">Advanced Machine Learning</span>
+            <span class="pill">Data Engineering</span>
+          </div>
+        </article>
+
+        <!-- BSc -->
+        <article class="entry-card">
+          <div class="entry-top">
+            <span class="entry-title">University of Manchester</span>
+            <span class="entry-date">Graduated 06/2026</span>
+          </div>
+          <div class="entry-sub">BSc Computer Science with Industrial Experience · First Class Honours (GPA: 74.9)</div>
+          <p class="entry-desc">
+            Awarded an 85% dissertation mark on multimodal transformer architectures. Research Support Sponsorship awarded by the university for WACV 2026 presentation.
+          </p>
+          <div class="pills-container">
+            <span class="pill">Computer Vision</span>
+            <span class="pill">NLP</span>
+            <span class="pill">Data Structures & Algorithms</span>
+            <span class="pill">Operating Systems</span>
+          </div>
+        </article>
+
+        <!-- High School -->
+        <article class="entry-card">
+          <div class="entry-top">
+            <span class="entry-title">"Constantin Diaconovici Loga" National High School</span>
+            <span class="entry-date">Graduated 06/2022</span>
+          </div>
+          <div class="entry-sub">Mathematics & Computer Science · GPA: 9.8 / 10</div>
+          <p class="entry-desc">
+            Romanian Baccalaureate: 9.7 / 10 overall (9.9 Biology, 9.7 Mathematics, 9.5 Romanian Language) — equivalent to A*A*A* at UK A-levels. Multiple County Olympiad prizes in Mathematics.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Section 4: Me -->
+    <section id="me">
+      <div class="section-title-wrap">
+        <span class="section-label">Beyond the Terminal</span>
+        <h2>Me</h2>
+      </div>
+
+      <div class="me-grid">
+        <div class="me-box">
+          <h3>🎵 Music & Songwriting</h3>
+          <p>
+            Guitarist and songwriter. Composing music provides a rigorous creative counterweight to engineering—focusing on phrasing, structure, harmony, and production rhythm.
+          </p>
+        </div>
+
+        <div class="me-box">
+          <h3>🏎️ Motorsports</h3>
+          <p>
+            Avid enthusiast of high-performance automotive engineering, telemetry analysis, and the technical precision of modern competitive motorsport racing.
+          </p>
+        </div>
+
+        <div class="me-box">
+          <h3>🤝 Community Leadership</h3>
+          <p>
+            Served as Vice President of Interact Ripensis Timișoara (2021–2022). Led 3 cross-functional teams, executing over 15 social and civic impact initiatives over 5 years of community engagement.
+          </p>
+        </div>
+
+        <div class="me-box">
+          <h3>🌐 Languages & Communication</h3>
+          <p>
+            English (Full Professional Proficiency), Romanian (Native), and French (Elementary). Driven by synthesis, clear written articulation, and pragmatic critical thinking.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 5: Contact -->
+    <section id="contact">
+      <div class="section-title-wrap">
+        <span class="section-label">Collaborations & Inquiries</span>
+        <h2>Contact</h2>
+      </div>
+
+      <div class="contact-container">
+        <div>
+          <h3 style="font-size: 1.25rem; margin-bottom: 0.35rem;">Let's connect</h3>
+          <p style="color: var(--text-muted); font-size: 0.92rem;">
+            Based in Manchester, UK. Open to research collaborations, technical discussions, and consultancy inquiries.
+          </p>
+        </div>
+
+        <div class="contact-links-grid">
+          <a class="contact-item" href="mailto:raul.balmez@student.manchester.ac.uk">
+            <span>Direct Email</span>
+            <strong>raul.balmez@... ↗</strong>
+          </a>
+
+          <a class="contact-item" href="https://linkedin.com" target="_blank">
+            <span>Network</span>
+            <strong>LinkedIn ↗</strong>
+          </a>
+
+          <a class="contact-item" href="https://scholar.google.com/citations?user=vPC7raQAAAAJ" target="_blank">
+            <span>Publications</span>
+            <strong>Google Scholar ↗</strong>
+          </a>
+
+          <a class="contact-item" href="https://github.com/raulbalmez" target="_blank">
+            <span>Code</span>
+            <strong>GitHub ↗</strong>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
     <footer>
       <span>Raul Balmez</span>
-      <span>Manchester, UK</span>
+      <span>Manchester, UK · 2026</span>
     </footer>
+
   </main>
 
 </body>
