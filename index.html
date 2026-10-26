@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Raul Balmez | Research & Engineering</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #0b0b0c;
+      --card-bg: #111113;
+      --card-hover: #161619;
+      --border: #222226;
+      --border-hover: #3a3a42;
+      --text-main: #ededed;
+      --text-muted: #8b8b93;
+      --text-dim: #5c5c63;
+      --accent: #ffffff;
+      --tag-bg: #1c1c21;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      font-family: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.6;
+      padding: 3rem 1.5rem;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+      display: flex;
+      justify-content: center;
+    }
+
+    .container {
+      max-width: 760px;
+      width: 100%;
+      animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    /* Subtle background grid accent */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+      background-size: 32px 32px;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    header {
+      margin-bottom: 3.5rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 2rem;
+    }
+
+    .name-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    h1 {
+      font-size: 2rem;
+      font-weight: 600;
+      letter-spacing: -0.04em;
+      color: #fff;
+    }
+
+    .status-badge {
+      font-family: 'Geist Mono', monospace;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 3px 8px;
+      background: var(--tag-bg);
+      border: 1px solid var(--border);
+      border-radius: 9999px;
+    }
+
+    .status-dot {
+      width: 6px;
+      height: 6px;
+      background-color: #22c55e;
+      border-radius: 50%;
+      box-shadow: 0 0 6px rgba(34, 197, 94, 0.6);
+    }
+
+    .bio {
+      color: var(--text-muted);
+      font-size: 0.98rem;
+      margin-top: 0.5rem;
+      max-width: 600px;
+    }
+
+    .links {
+      display: flex;
+      gap: 1.25rem;
+      margin-top: 1.25rem;
+    }
+
+    .link-item {
+      font-family: 'Geist Mono', monospace;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      text-decoration: none;
+      transition: color 0.2s ease, transform 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .link-item:hover {
+      color: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    /* Section Styles */
+    section {
+      margin-bottom: 4rem;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    h2 {
+      font-size: 1.15rem;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      color: #fff;
+      text-transform: uppercase;
+      font-family: 'Geist Mono', monospace;
+    }
+
+    .section-line {
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* Card styling */
+    .stack {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.25rem;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+    }
+
+    .card:hover {
+      background: var(--card-hover);
+      border-color: var(--border-hover);
+      transform: translateY(-2px);
+    }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 0.35rem;
+      gap: 1rem;
+    }
+
+    .card-title {
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--text-main);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .card-title:hover {
+      color: #fff;
+      text-decoration: underline;
+    }
+
+    .date {
+      font-family: 'Geist Mono', monospace;
+      font-size: 0.78rem;
+      color: var(--text-dim);
+      white-space: nowrap;
+    }
+
+    .role-company {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin-bottom: 0.6rem;
+    }
+
+    .authors {
+      font-size: 0.85rem;
+      color: var(--text-dim);
+      margin-bottom: 0.4rem;
+    }
+
+    .authors strong {
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .desc {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    ul.desc-list {
+      list-style-type: disc;
+      list-style-position: inside;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin-top: 0.4rem;
+    }
+
+    ul.desc-list li {
+      margin-bottom: 0.3rem;
+    }
+
+    .meta-tags {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-top: 0.8rem;
+    }
+
+    .tag {
+      font-family: 'Geist Mono', monospace;
+      font-size: 0.72rem;
+      padding: 2px 7px;
+      border-radius: 4px;
+      background: var(--tag-bg);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+    }
+
+    .badge-venue {
+      font-family: 'Geist Mono', monospace;
+      font-size: 0.72rem;
+      padding: 2px 6px;
+      border-radius: 4px;
+      background: #ffffff;
+      color: #000;
+      font-weight: 600;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding-top: 2rem;
+      display: flex;
+      justify-content: space-between;
+      color: var(--text-dim);
+      font-size: 0.8rem;
+      font-family: 'Geist Mono', monospace;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <main class="container">
+    <!-- Header / Bio -->
+    <header>
+      <div class="name-title">
+        <h1>Raul Balmez</h1>
+        <div class="status-badge">
+          <span class="status-dot"></span>
+          <span>Spärck AI Scholar</span>
+        </div>
+      </div>
+      <p class="bio">
+        MSc Machine Learning student at the University of Manchester. 
+        Focusing on low-light enhancement, vision transformers, and efficient AI systems.
+      </p>
+      
+      <div class="links">
+        <a class="link-item" href="https://github.com/raulbalmez" target="_blank">GitHub ↗</a>
+        <a class="link-item" href="https://scholar.google.com/citations?user=vPC7raQAAAAJ" target="_blank">Scholar ↗</a>
+        <a class="link-item" href="https://linkedin.com" target="_blank">LinkedIn ↗</a>
+        <a class="link-item" href="mailto:raul.balmez@student.manchester.ac.uk">Email ↗</a>
+      </div>
+    </header>
+
+    <!-- Section 1: Research -->
+    <section id="research">
+      <div class="section-header">
+        <h2>01 / Research</h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="stack">
+        <!-- Paper 1 -->
+        <article class="card">
+          <div class="card-top">
+            <a class="card-title" href="https://arxiv.org/abs/2610.21990" target="_blank">
+              VesperMUSE: Multi-Modal Fusion Vision Transformer ↗
+            </a>
+            <span class="date">2026</span>
+          </div>
+          <div class="authors"><strong>Balmez, R.</strong></div>
+          <p class="desc">
+            BSc Dissertation achieving 85%. Multi-Modal Fusion Vision Transformer for Image Semantic Segmentation under diverse and extreme lighting environments.
+          </p>
+          <div class="meta-tags">
+            <span class="badge-venue">arXiv:2610.21990</span>
+            <span class="tag">Vision Transformers</span>
+            <span class="tag">Multi-Modal</span>
+            <span class="tag">Segmentation</span>
+          </div>
+        </article>
+
+        <!-- Paper 2 -->
+        <article class="card">
+          <div class="card-top">
+            <a class="card-title" href="https://github.com/raulbalmez/ISALux" target="_blank">
+              ISALux: Illumination & Segmentation Aware Transformer ↗
+            </a>
+            <span class="date">2026</span>
+          </div>
+          <div class="authors"><strong>Balmez, R.</strong>, Brateanu, A., Orhei, C., Ancuti, C., Ancuti, C.</div>
+          <p class="desc">
+            Transformer employing Mixture of Experts (MoE) for low-light image enhancement, integrating illumination-semantic awareness.
+          </p>
+          <div class="meta-tags">
+            <span class="badge-venue">WACV 2026</span>
+            <span class="tag">Mixture of Experts</span>
+            <span class="tag">Low-Light Enhancement</span>
+          </div>
+        </article>
+
+        <!-- Paper 3 -->
+        <article class="card">
+          <div class="card-top">
+            <a class="card-title" href="https://github.com/raulbalmez/DepthLux" target="_blank">
+              DepthLux: Depthwise Separable Convolutions in LLIE ↗
+            </a>
+            <span class="date">2025</span>
+          </div>
+          <div class="authors"><strong>Balmez, R.</strong>, Brateanu, A., Orhei, C., Ancuti, C. O., Ancuti, C.</div>
+          <p class="desc">
+            Novel Vision Transformer framework employing depthwise separable convolutions in the feed-forward network for parameter efficiency.
+          </p>
+          <div class="meta-tags">
+            <span class="badge-venue">Sensors 25(5)</span>
+            <span class="tag">Efficient Transformers</span>
+            <span class="tag">Image Restoration</span>
+          </div>
+        </article>
+
+        <!-- Paper 4 -->
+        <article class="card">
+          <div class="card-top">
+            <span class="card-title">Enhancing Low-Light Images with KANs in Attention</span>
+            <span class="date">2025</span>
+          </div>
+          <div class="authors">Brateanu, A., <strong>Balmez, R.</strong>, Orhei, C., Ancuti, C., Ancuti, C.</div>
+          <p class="desc">
+            Investigating Kolmogorov–Arnold Networks (KAN) within transformer attention layers for non-linear image feature mapping.
+          </p>
+          <div class="meta-tags">
+            <span class="badge-venue">Sensors 25(2)</span>
+            <span class="tag">KANs</span>
+            <span class="tag">Attention Mechanisms</span>
+          </div>
+        </article>
+
+        <!-- Paper 5 -->
+        <article class="card">
+          <div class="card-top">
+            <span class="card-title">LYT-Net: Lightweight YUV Transformer</span>
+            <span class="date">2025</span>
+          </div>
+          <div class="authors">Brateanu, A., <strong>Balmez, R.</strong>, Avram, A., Orhei, C., Ancuti, C.</div>
+          <p class="desc">
+            Lightweight transformer architecture exploiting the YUV color space representation for efficient restoration.
+          </p>
+          <div class="meta-tags">
+            <span class="badge-venue">IEEE SPL</span>
+            <span class="tag">Lightweight Architectures</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Section 2: Engineering -->
+    <section id="engineering">
+      <div class="section-header">
+        <h2>02 / Engineering</h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="stack">
+        <!-- Expedera -->
+        <article class="card">
+          <div class="card-top">
+            <span class="card-title">Expedera Inc.</span>
+            <span class="date">07/2024 — 11/2025</span>
+          </div>
+          <div class="role-company">AI Software Engineer · Bath, UK</div>
+          <ul class="desc-list">
+            <li>Implemented post-training quantization (PTQ) and quantization-aware training (QAT) to optimize LLM and multimodal models for edge NPU inference.</li>
+            <li>Built cross-framework I/O pipelines and automated evaluation tools for low-latency testing on silicon targets.</li>
+            <li>Conducted knowledge transfer and onboarding workshops for incoming engineering cohorts.</li>
+          </ul>
+          <div class="meta-tags">
+            <span class="tag">PyTorch</span>
+            <span class="tag">Quantization (PTQ/QAT)</span>
+            <span class="tag">LLM Inference</span>
+            <span class="tag">C/C++</span>
+          </div>
+        </article>
+
+        <!-- Continental -->
+        <article class="card">
+          <div class="card-top">
+            <span class="card-title">Continental</span>
+            <span class="date">07/2023 — 09/2023</span>
+          </div>
+          <div class="role-company">AI Research Intern · Timișoara, Romania</div>
+          <ul class="desc-list">
+            <li>Researched image enhancement and signal processing pipelines using Generative Adversarial Networks (GANs).</li>
+            <li>Constructed an ISP chain with over 10 custom layout and enhancement filters.</li>
+            <li>Trained and benchmarked 4 custom convolutional generative models, delivering an internal white paper on low-light enhancement.</li>
+          </ul>
+          <div class="meta-tags">
+            <span class="tag">GANs</span>
+            <span class="tag">ISP Pipeline</span>
+            <span class="tag">Computer Vision</span>
+            <span class="tag">PyTorch</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <footer>
+      <span>Raul Balmez</span>
+      <span>Manchester, UK</span>
+    </footer>
+  </main>
+
+</body>
+</html>
